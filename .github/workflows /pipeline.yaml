@@ -16,7 +16,7 @@ jobs:
         cache: 'pip'
 
       - name: Virtual env
-        run: |
+        run: 
           python3 -m venv venv
           source venv/bin/activate
 
