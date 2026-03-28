@@ -1,4 +1,4 @@
-name: devops-pipeline
+name: devops-pipeline-new
 on: workflow_dispatch
 jobs:
   build-job:
