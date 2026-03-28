@@ -1,33 +1,28 @@
 name: devops-pipeline
-
-on:
-  workflow_dispatch:
-
+on: workflow_dispatch
 jobs:
   build-job:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository code
         uses: actions/checkout@v4
+        with:
+          ref: main
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
+      - name: Installing Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.13'
-          cache: 'pip'
+        cache: 'pip'
 
-      - name: Create virtual environment
+      - name: Virtual env
         run: |
           python3 -m venv venv
           source venv/bin/activate
 
-      - name: Install dependencies
-        run: |
-          source venv/bin/activate
-          pip install -r requirements.txt
+      - name: Install Flask
+        run: pip3 install -r requirements.txt
 
-      - name: Run application
-        run: |
-          source venv/bin/activate
-          python app.py
+      - name: Run Application
+        run: python app.py
+         
